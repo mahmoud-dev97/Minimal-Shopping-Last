@@ -106,6 +106,7 @@ body {
     }
   }
   .product-details {
+    position: relative;
     .row {
       min-height: calc(100vh - 100px);
       align-items: center;
@@ -127,6 +128,25 @@ body {
     }
     .brand {
       color: rgba(110, 124, 135, 1);
+    }
+    .alert {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+  .favourites-cart {
+    position: relative;
+    .card {
+      border-radius: 16px;
+      .card-img-top {
+        border-radius: 16px 16px 0 0;
+      }
+    }
+    .alert {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
   .login {
@@ -170,12 +190,20 @@ body {
       }
     }
   }
-  .favourites-cart {
-    .card {
-      border-radius: 16px;
-      .card-img-top {
-        border-radius: 16px 16px 0 0;
-      }
-    }
+}
+
+.fadeInRightBig {
+  animation-name: fadeInRightBig;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+@keyframes fadeInRightBig {
+  0% {
+    opacity: 0;
+    transform: translate3d(2000px, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
   }
 }

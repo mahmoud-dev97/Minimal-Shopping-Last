@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export default function Favourite() {
   const dispatch = useDispatch();
   const [favorites, setFavorites] = useState([]);
+  
   useEffect(() => {
     const favProducts = JSON.parse(localStorage.getItem("favProducts"));
     if (favProducts) {

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { addToFavorites, fetchProduct } from "../store/slices/productsSlice";
 import { Col, Container, Row } from "react-bootstrap";
 import { HiStar } from "react-icons/hi";
+import AutoCloseAlert from "../components/AutoCloseAlert";
 
 export default function Product() {
   const { id } = useParams();
@@ -51,6 +52,12 @@ export default function Product() {
           >
             Add to Cart
           </button>
+          {dBtn && (
+            <AutoCloseAlert
+              variant="success"
+              message="Added to Cart Successful"
+            />
+          )}
         </Col>
       </Row>
     </Container>
