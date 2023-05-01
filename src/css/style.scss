@@ -1,0 +1,170 @@
+$orange: #fe8a00;
+$back-gray: rgba(0, 0, 0, 0.025);
+$des-gray: rgba(0, 0, 0, 0.5);
+$red: #f61b5a;
+$black: #252c32;
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: $back-gray;
+  .my-heding {
+    margin: 30px 0;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.75);
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .card {
+    position: relative;
+    border: unset;
+    background-color: unset;
+    .card-img,
+    .card-img-top {
+      border-radius: 16px;
+      height: 320px;
+    }
+    .card-text {
+      color: $des-gray;
+    }
+    .parent {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 42px;
+      height: 42px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .heart {
+        color: $des-gray;
+        font-size: 20px;
+      }
+      .heart-red {
+        color: $red;
+        font-size: 20px;
+      }
+    }
+  }
+  .my-btn {
+    color: $red;
+    border: unset;
+    border-radius: 50px;
+    background-color: white;
+    padding: 10px 50px;
+    font-size: 20px;
+    font-weight: 500;
+    transition: ease-in-out 0.4s;
+    text-decoration: none;
+  }
+  .my-btn:hover {
+    background-color: $red;
+    color: white;
+  }
+  // navbar
+  .nav-bar {
+    background-color: white;
+    height: 100px;
+    .login-icon {
+      font-size: 30px;
+      color: rgba(91, 104, 113, 1);
+    }
+    .fav {
+      position: relative;
+      .badge {
+        border-radius: 50%;
+        position: absolute;
+        top: -10px;
+        left: -10px;
+      }
+    }
+  }
+  // home page
+  .home {
+    header {
+      min-height: 364px;
+      background-color: $orange;
+      h2 {
+        color: white;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 50px;
+        text-align: center;
+      }
+    }
+  }
+  .product-details {
+    .row {
+      min-height: calc(100vh - 100px);
+      align-items: center;
+      align-content: center;
+      justify-content: center;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 48px;
+      letter-spacing: -2.2%;
+    }
+    h5 {
+      font-size: 25px;
+      line-height: 24px;
+      font-weight: 400;
+      font-style: normal;
+      color: rgba(37, 44, 50, 1);
+    }
+    .brand {
+      color: rgba(110, 124, 135, 1);
+    }
+  }
+  .login {
+    .row {
+      h2 {
+        font-size: 28px;
+        font-weight: 500px;
+        line-height: 30px;
+        color: rgba(26, 37, 48, 1);
+      }
+      h4 {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(112, 123, 129, 1);
+      }
+    }
+    form {
+      h4 {
+        font-size: 18px;
+        color: rgba(33, 33, 33, 1);
+        line-height: 25.2px;
+        font-weight: 400;
+      }
+      input {
+        width: 100%;
+        border-color: $orange;
+        border-width: 0 0 2px 0;
+        background-color: unset;
+        height: 50px;
+        margin-bottom: 30px;
+      }
+      input:focus {
+        outline: unset;
+      }
+      label {
+        margin: 30px 0;
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(26, 37, 48, 1);
+      }
+    }
+  }
+  .favourites-cart {
+    .card {
+      border-radius: 16px;
+      .card-img-top {
+        border-radius: 16px 16px 0 0;
+      }
+    }
+  }
+}
