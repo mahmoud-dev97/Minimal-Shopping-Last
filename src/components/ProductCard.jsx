@@ -27,7 +27,7 @@ export default function ProductCard({ product }) {
   }, [product.id]);
 
   return (
-    <Col lg={3} md={4} sm={6} className="p-3">
+    <Col lg={3} md={4} sm={6} className="p-3 ">
       <Card>
         <Link to={`/products/${product.id}`}>
           <Card.Img variant="top" src={product.thumbnail} />
