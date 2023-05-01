@@ -58,9 +58,20 @@ body {
     transition: ease-in-out 0.4s;
     text-decoration: none;
   }
+  .my-btn:disabled:hover {
+    background-color: #eee;
+    color: red;
+  }
   .my-btn:hover {
     background-color: $red;
     color: white;
+  }
+  .loading {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   // navbar
   .nav-bar {

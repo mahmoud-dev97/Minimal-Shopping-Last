@@ -13,7 +13,7 @@
 
 - This will start the app in development mode and open it in your default browser at http://localhost:3000.
 
-- The app consists of two main pages: the product list page and the product details page.
+- The app consists of three main pages: the product list page and the product details page and favourites page.
 
 ## Product List Page
 - The product list page displays a grid of product cards, each containing an image, a title, a price, and a heart icon. The heart icon represents whether the product is in the favorites list or not.
@@ -26,3 +26,6 @@
 - The product details page displays the details of a single product, including the image, title, price, and description. The page also includes a form to edit the product details.
 
 - To edit a product, simply change the values in the form and click the "Save Changes" button. The app will send a PATCH request to the dummy API to update the product with the new values, and the product list and details page will be updated accordingly.
+
+## Favourites page
+- Clicking on the trash icon will remove the product from the favorites list. The favorites list is stored in local storage and persists across sessions.

@@ -2,15 +2,8 @@ import React from "react";
 import { Spinner } from "react-bootstrap";
 
 export default function Loading() {
-  const loadingStyle = {
-    height: "500px",
-    width: "100%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  };
   return (
-    <div style={loadingStyle}>
+    <div className="loading">
       <Spinner
         style={{ width: "300px", height: "300px" }}
         animation="border"
