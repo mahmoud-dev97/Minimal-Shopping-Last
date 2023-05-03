@@ -129,11 +129,6 @@ body {
     .brand {
       color: rgba(110, 124, 135, 1);
     }
-    .alert {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
   }
   .favourites-cart {
     position: relative;
@@ -143,19 +138,14 @@ body {
         border-radius: 16px 16px 0 0;
       }
     }
-    .alert {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
   }
   .login {
+    position: relative;
     .row {
       h2 {
-        font-size: 28px;
-        font-weight: 500px;
         line-height: 30px;
         color: rgba(26, 37, 48, 1);
+        margin-top: 70px;
       }
       h4 {
         font-weight: 400;
@@ -188,6 +178,32 @@ body {
         font-weight: 700;
         color: rgba(26, 37, 48, 1);
       }
+    }
+  }
+  .pagination {
+    .page-link {
+      color: $orange;
+    }
+    .active {
+      .page-link {
+        background-color: $orange;
+        color: white;
+        border-color: unset;
+      }
+    }
+    .page-link:focus {
+      box-shadow: unset;
+    }
+  }
+
+  // alert style
+  .login,
+  .favourites-cart,
+  .product-details {
+    .alert {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 }
