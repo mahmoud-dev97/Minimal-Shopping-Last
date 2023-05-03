@@ -16,13 +16,13 @@ export default function ProductsCard() {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
 
-  // Get current Books
-  const indexOfLastProduct = currentPage * productsPerPage; // 1 * 8 = 8 / 2 * 8 = 16 / 3 * 8 = 24
-  const indexOfFirstProduct = indexOfLastProduct - productsPerPage; // 8 - 8 = 0 / 16 - 8 = 8 / 24 - 8 = 16
+  // Get current Products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = allProducts.slice(
     indexOfFirstProduct,
     indexOfLastProduct
-  ); // 0 -> 8 (index 0 to index 7 === 8 books) / 8 -> 16 / 16 -> 24
+  );
 
   // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber); // -> pagenum = 1 || 2 || 3
