@@ -1,4 +1,3 @@
-import React from "react";
 import logo from "../assets/images/header-logo-group.png";
 import { HiUser } from "react-icons/hi";
 import { IoMdHeart } from "react-icons/io";
@@ -8,6 +7,7 @@ import { useSelector } from "react-redux";
 
 export default function NavBar() {
   const favArr = useSelector((state) => state.products.favArr);
+
   return (
     <div className="nav-bar d-flex justify-content-between align-items-center px-4">
       <Link to="/">

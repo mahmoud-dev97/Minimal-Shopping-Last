@@ -9,14 +9,12 @@ import DropdownBtn from "./DropdownBtn";
 import Pagination from "./Pagination";
 
 export default function ProductsCard() {
-  const [products, setProducts] = useState([]);
   const location = useLocation();
   const allProducts = useSelector((state) => state.products.arr);
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
 
-  // Get current Products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = allProducts.slice(
@@ -24,30 +22,24 @@ export default function ProductsCard() {
     indexOfLastProduct
   );
 
-  // Change page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber); // -> pagenum = 1 || 2 || 3
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
-  useEffect(() => {
-    if (location.pathname === "/") {
-      setProducts(allProducts.slice(0, 8));
-    } else {
-      setProducts(allProducts);
-    }
-  }, [allProducts, location.pathname]);
+  }, [dispatch]);
+
   return (
     <Container fluid className="px-5">
       <Row>
         {location.pathname !== "/" && currentPage === 1 && <DropdownBtn />}
-        {products.length < 1 ? (
+        {allProducts.length === 0 ? (
           <Loading />
         ) : (
           currentProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))
         )}
-        {location.pathname !== "/" && products.length === 30 && (
+        {location.pathname !== "/" && allProducts.length === 30 && (
           <Pagination paginateNum={paginate} />
         )}
       </Row>

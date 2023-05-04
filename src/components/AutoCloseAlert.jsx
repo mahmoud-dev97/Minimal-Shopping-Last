@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Alert } from "react-bootstrap";
 
 function AutoCloseAlert(props) {
@@ -10,7 +10,7 @@ function AutoCloseAlert(props) {
     }, 2500);
 
     return () => clearTimeout(timer);
-  }, [props.timeout]);
+  }, []);
 
   return (
     <>

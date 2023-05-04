@@ -5,9 +5,10 @@ import {
   fetchProductsByCategories,
 } from "../store/slices/productsSlice";
 import { useState } from "react";
+
 function DropdownBtn() {
-  const [catTitle, setCatTitle] = useState("CATEGORIES");
-  const catArr = [
+  const [categoryTitle, setCategoryTitle] = useState("CATEGORIES");
+  const categories = [
     "all",
     "smartphones",
     "laptops",
@@ -18,25 +19,25 @@ function DropdownBtn() {
   ];
   const dispatch = useDispatch();
 
-  const handelFilter = (catItem) => {
-    if (catItem === "all") {
+  const handleFilter = (category) => {
+    if (category === "all") {
       dispatch(fetchProducts());
-      setCatTitle("CATEGORIES");
+      setCategoryTitle("CATEGORIES");
     } else {
-      dispatch(fetchProductsByCategories(catItem));
-      setCatTitle(catItem.toUpperCase());
+      dispatch(fetchProductsByCategories(category));
+      setCategoryTitle(category.toUpperCase());
     }
   };
 
   return (
     <Dropdown>
       <Dropdown.Toggle variant="outline-secondary" id="dropdown-basic">
-        {catTitle}
+        {categoryTitle}
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {catArr.map((catItem, i) => (
-          <Dropdown.Item key={i} onClick={() => handelFilter(catItem)}>
-            {catItem.toUpperCase()}
+        {categories.map((category, i) => (
+          <Dropdown.Item key={i} onClick={() => handleFilter(category)}>
+            {category.toUpperCase()}
           </Dropdown.Item>
         ))}
       </Dropdown.Menu>

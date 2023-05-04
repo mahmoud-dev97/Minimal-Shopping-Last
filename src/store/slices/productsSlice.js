@@ -8,23 +8,21 @@ const initialState = {
   obj: {},
   favArr: initialFavArr,
 };
-// fetch products
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
     const res = await axios.get("https://dummyjson.com/products");
-    console.log(res.data.products);
     return res.data.products;
   }
 );
-// fetch products by categories
+
 export const fetchProductsByCategories = createAsyncThunk(
   "products/fetchProductsByCategories",
   async (cat) => {
     const res = await axios.get(
       `https://dummyjson.com/products/category/${cat}`
     );
-    console.log(res.data.products);
     return res.data.products;
   }
 );
@@ -51,15 +49,16 @@ export const productsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.arr = action.payload;
-    });
-    builder.addCase(fetchProductsByCategories.fulfilled, (state, action) => {
-      state.arr = action.payload;
-    });
-    builder.addCase(fetchProduct.fulfilled, (state, action) => {
-      state.obj = action.payload;
-    });
+    builder
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.arr = action.payload;
+      })
+      .addCase(fetchProductsByCategories.fulfilled, (state, action) => {
+        state.arr = action.payload;
+      })
+      .addCase(fetchProduct.fulfilled, (state, action) => {
+        state.obj = action.payload;
+      });
   },
 });
 

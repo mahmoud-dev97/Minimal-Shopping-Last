@@ -7,7 +7,7 @@ import Product from "./pages/Product";
 import Favourites from "./pages/Favourites";
 function App() {
   return (
-    <div className="App">
+    <>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -16,7 +16,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Product />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

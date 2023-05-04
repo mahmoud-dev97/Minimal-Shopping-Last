@@ -7,11 +7,13 @@ import {
   removeFromFavorites,
   addToFavorites,
 } from "../store/slices/productsSlice";
+
 export default function ProductCard({ product }) {
   const [heart, setHeart] = useState("heart");
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
-  const handelClick = () => {
+
+  const handleClick = () => {
     if (products.favArr.some((fav) => fav.id === product.id)) {
       setHeart("heart");
       dispatch(removeFromFavorites(product));
@@ -20,6 +22,7 @@ export default function ProductCard({ product }) {
       dispatch(addToFavorites(product));
     }
   };
+
   useEffect(() => {
     const favProducts = JSON.parse(localStorage.getItem("favProducts")) || [];
     const isFavorite = favProducts.some((fav) => fav.id === product.id);
@@ -34,11 +37,12 @@ export default function ProductCard({ product }) {
         </Link>
         <Card.Body>
           <Card.Title className="d-flex justify-content-between">
-            <span>{product.title}</span> <span>{product.price}$</span>
+            <span>{product.title}</span>
+            <span>{product.price}$</span>
           </Card.Title>
           <Card.Text>{product.description.substring(0, 47)}...</Card.Text>
         </Card.Body>
-        <div className="parent" onClick={handelClick}>
+        <div className="parent" onClick={handleClick}>
           <IoMdHeartEmpty className={heart} />
         </div>
       </Card>

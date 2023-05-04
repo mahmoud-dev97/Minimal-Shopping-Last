@@ -1,16 +1,15 @@
-import { Alert, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import AutoCloseAlert from "../components/AutoCloseAlert";
 
-// username: "kminchelle",
-// password: "0lelplR",
-
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [err, setErr] = useState(false);
-  const handelSubmit = () => {
+  const [error, setError] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
     axios
       .post("https://dummyjson.com/auth/login", {
         username: email,
@@ -18,11 +17,11 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data);
-        setErr(false);
+        setError(false);
         alert(`Welcome back ${res.data.firstName} ${res.data.lastName}`);
       })
-      .catch((error) => {
-        setErr(true);
+      .catch(() => {
+        setError(true);
       });
   };
 
@@ -32,7 +31,7 @@ export default function Login() {
         <h2 className="my-heding">Hello Again!</h2>
         <h4>To login enter Your email address and password</h4>
       </Row>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={handleSubmit}>
         <h4>Welcome Back You’ve Been Missed!</h4>
         <div className="mail">
           <label htmlFor="email">Username</label>
@@ -51,14 +50,14 @@ export default function Login() {
             type="password"
             required
           />
-          {err && (
+          {error && (
             <AutoCloseAlert
               message="Username or Password is Wrong"
               variant="danger"
             />
           )}
           <div className="text-center mt-5">
-            <button className="my-btn" type="submit" onClick={handelSubmit}>
+            <button className="my-btn" type="submit">
               Login
             </button>
           </div>
