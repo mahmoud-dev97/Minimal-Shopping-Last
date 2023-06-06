@@ -7,6 +7,8 @@ import {
   removeFromFavorites,
   addToFavorites,
 } from "../store/slices/productsSlice";
+import { successToast } from "./AlertTimer";
+import { ToastContainer } from "react-toastify";
 
 export default function ProductCard({ product }) {
   const [heart, setHeart] = useState("heart");
@@ -20,6 +22,7 @@ export default function ProductCard({ product }) {
     } else {
       setHeart("heart-red");
       dispatch(addToFavorites(product));
+      successToast("Product added successfully");
     }
   };
 
@@ -30,22 +33,23 @@ export default function ProductCard({ product }) {
   }, [product.id]);
 
   return (
-    <Col lg={3} md={4} sm={6} className="p-3">
-      <Card>
-        <Link to={`/products/${product.id}`}>
-          <Card.Img variant="top" src={product.thumbnail} />
-        </Link>
-        <Card.Body>
-          <Card.Title className="d-flex justify-content-between">
-            <span>{product.title}</span>
-            <span>{product.price}$</span>
-          </Card.Title>
-          <Card.Text>{product.description.substring(0, 47)}...</Card.Text>
-        </Card.Body>
-        <div className="parent" onClick={handleClick}>
-          <IoMdHeartEmpty className={heart} />
-        </div>
-      </Card>
-    </Col>
+      <Col lg={3} md={4} sm={6} className="p-3">
+        <Card>
+          <Link to={`/products/${product.id}`}>
+            <Card.Img variant="top" src={product.thumbnail} />
+          </Link>
+          <Card.Body>
+            <Card.Title className="d-flex justify-content-between">
+              <span>{product.title}</span>
+              <span>{product.price}$</span>
+            </Card.Title>
+            <Card.Text>{product.description.substring(0, 47)}...</Card.Text>
+          </Card.Body>
+          <div className="parent" onClick={handleClick}>
+            <IoMdHeartEmpty className={heart} />
+          </div>
+        </Card>
+        <ToastContainer />
+      </Col>
   );
 }

@@ -3,6 +3,8 @@ import { HiTrash } from "react-icons/hi";
 import { useDispatch } from "react-redux";
 import { removeFromFavorites } from "../store/slices/productsSlice";
 import { useEffect, useState } from "react";
+import { successToast } from "../components/AlertTimer";
+import { ToastContainer } from "react-toastify";
 
 export default function Favourite() {
   const dispatch = useDispatch();
@@ -20,6 +22,7 @@ export default function Favourite() {
     setFavorites(updatedFavorites);
     localStorage.setItem("favProducts", JSON.stringify(updatedFavorites));
     dispatch(removeFromFavorites(fav));
+    successToast("Product removed successfully");
   };
 
   return (
@@ -49,6 +52,7 @@ export default function Favourite() {
         ) : (
           <h2>Your Cart is Empty</h2>
         )}
+        <ToastContainer />
       </Row>
     </Container>
   );

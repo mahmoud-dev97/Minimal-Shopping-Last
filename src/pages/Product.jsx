@@ -4,15 +4,13 @@ import { useParams } from "react-router-dom";
 import { addToFavorites, fetchProduct } from "../store/slices/productsSlice";
 import { Col, Container, Row } from "react-bootstrap";
 import { HiStar } from "react-icons/hi";
-import AutoCloseAlert from "../components/AutoCloseAlert";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { successToast } from "../components/AlertTimer";
+import { ToastContainer } from "react-toastify";
 
 export default function Product() {
   const { id } = useParams();
   const [disableButton, setDisableButton] = useState(false);
-
   const dispatch = useDispatch();
   const product = useSelector((state) => state.products.obj);
   const favoriteProducts = useSelector((state) => state.products.favArr);
@@ -27,6 +25,7 @@ export default function Product() {
     } else {
       setDisableButton(true);
       dispatch(addToFavorites(product));
+      successToast("Product added successfully");
     }
   };
 
@@ -74,12 +73,7 @@ export default function Product() {
           >
             Add to Cart
           </button>
-          {disableButton && (
-            <AutoCloseAlert
-              variant="success"
-              message="Added to Cart Successful"
-            />
-          )}
+          <ToastContainer />
         </Col>
       </Row>
     </Container>

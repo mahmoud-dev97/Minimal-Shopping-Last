@@ -1,12 +1,12 @@
 import { Container, Row } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-import AutoCloseAlert from "../components/AutoCloseAlert";
+import { errorToast } from "../components/AlertTimer";
+import { ToastContainer } from "react-toastify";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +17,10 @@ export default function Login() {
       })
       .then((res) => {
         console.log(res.data);
-        setError(false);
         alert(`Welcome back ${res.data.firstName} ${res.data.lastName}`);
       })
       .catch(() => {
-        setError(true);
+        errorToast("Username or Password is Wrong");
       });
   };
 
@@ -50,12 +49,6 @@ export default function Login() {
             type="password"
             required
           />
-          {error && (
-            <AutoCloseAlert
-              message="Username or Password is Wrong"
-              variant="danger"
-            />
-          )}
           <div className="text-center mt-5">
             <button className="my-btn" type="submit">
               Login
@@ -63,6 +56,7 @@ export default function Login() {
           </div>
         </div>
       </form>
+      <ToastContainer />
     </Container>
   );
 }
